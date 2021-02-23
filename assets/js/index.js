@@ -15,7 +15,7 @@ $(function() {
         });
     })
 });
-
+// 获取用户基本信息
 function getUserInfo() {
     $.ajax({
         type: "GET",
@@ -29,11 +29,20 @@ function getUserInfo() {
                 return layer.msg(res.message);
             }
             renderAvatar(res.data);
-        }
+        },
+        // 优化到baseAPI中
+        // complete: function(res) {
+        //     if (res.responseJSON.status === 1 && res.responseJSON.message === "身份认证失败！") {
+        //         // 1.强制清空token
+        //         localStorage.removeItem('token');
+        //         // 2.跳转到login.html页面
+        //         location.href = '/login.html';
+        //     }
+        // }
     })
 };
 
-
+// 更换头像
 function renderAvatar(user) {
     // console.log(user);
     // 渲染欢迎文本
