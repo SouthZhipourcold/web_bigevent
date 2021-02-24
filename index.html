@@ -7,6 +7,8 @@
     <title>后台主页</title>
     <!-- 导入 layui 的样式表 -->
     <link rel="stylesheet" href="/assets/lib/layui/css/layui.css" />
+    <!-- 导入cropper 的样式表  -->
+    <link rel="stylesheet" href="/assets/lib/cropper/cropper.css" />
     <!-- 导入自己的的样式表 -->
     <link rel="stylesheet" href="/assets/css/index.css" />
     <!-- 导入第三方字体库 -->
@@ -30,7 +32,7 @@
                     </a>
                     <dl class="layui-nav-child">
                         <dd><a href="/user/user_info.html" target="fm">基本资料</a></dd>
-                        <dd><a href="/user/" target="fm">更换头像</a></dd>
+                        <dd><a href="/user/user_avatar.html" target="fm">更换头像</a></dd>
                         <dd><a href="/user/user_pwd.html" target="fm">重置密码</a></dd>
                     </dl>
                 </li>
@@ -66,7 +68,7 @@
                         <a href="javascript:;"><span class="iconfont icon-user"></span>个人中心</a>
                         <dl class="layui-nav-child">
                             <dd><a href="/user/user_info.html" target="fm"><i class="layui-icon layui-icon-app"></i>基本资料</a></dd>
-                            <dd><a href="/user/" target="fm"><i class="layui-icon layui-icon-app"></i>更换头像</a></dd>
+                            <dd><a href="/user/user_avatar.html" target="fm"><i class="layui-icon layui-icon-app"></i>更换头像</a></dd>
                             <dd><a href="/user/user_pwd.html" target="fm"><i class="layui-icon layui-icon-app"></i>重置密码</a></dd>
                         </dl>
                     </li>
@@ -88,10 +90,23 @@
     <script src="/assets/lib/layui/layui.all.js"></script>
     <!-- 导入jQuery 的js文件  -->
     <script src="/assets/lib/jquery.js"></script>
+    <!-- 导入jQuery 的js文件  -->
+
+    <!-- 导入 Cropper 的js文件  -->
+    <script src="/assets/lib/cropper/Cropper.js"></script>
+    <script src="/assets/lib/cropper/jquery-cropper.js"></script>
+
     <!-- 引入baseAPI -->
     <script src="/assets/js/baseAPI.js"></script>
     <!-- 引入自己的js文件 -->
     <script src="/assets/js/index.js"></script>
+
+
+
+
+
+
+
 </body>
 
 </html>

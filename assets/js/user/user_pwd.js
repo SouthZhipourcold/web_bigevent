@@ -25,14 +25,16 @@ $(function() {
             type: 'POST',
             url: '/my/userinfo',
             data: $(this).serialize(),
-            success: function(res) {
+            // success:function (res)  {
+            success: (res) => {
                 if (res.status !== 0) {
                     return layer.msg('更新密码失败!')
                 }
                 layer.msg('更新密码成功!')
 
                 // 重置表单(清空表单)
-                $('.layui-form')[0].reset();
+                // $('.layui-form')[0].reset();
+                this.reset();
             }
         });
     });
