@@ -102,7 +102,7 @@ $(function() {
                 // 把最新的页码值，赋值到 q 这个查询参数对象中
                 q.pagenum = obj.curr;
                 // 把最新的条目数，赋值到 q 这个查询参数对象的 pagesize 属性中
-                q.pagesize = obj.limit;
+                q.pagesize = obj.limit; //切换每页有多少条信息
                 // 根据最新的 q 获取对应的数据列表，并渲染表格
                 // initTable()
                 if (!first) {
@@ -112,5 +112,33 @@ $(function() {
         });
     };
 
+    // 通过代理的形式，为删除按钮绑定点击事件处理函数
+    $('tbody').on('click', '.btn-delete', function() {
+        // 获取到文章的 id
+        const length = $('.btn-delete').length;
+        const id = $(this).attr('data-id');
+        // 询问用户是否要删除数据
+        layer.confirm('确认删除?', { icon: 3, title: '提示' }, function(index) {
+            $.ajax({
+                method: 'GET',
+                url: '/my/article/delete/' + id,
+                success: function(res) {
+                    if (res.status !== 0) {
+                        return layer.msg('删除文章失败！');
+                    }
 
+                    layer.msg('删除文章成功！');
+
+                    // 当数据删除完成后，需要判断当前这一页中，是否还有剩余的数据
+                    // 如果没有剩余的数据了,则让页码值 -1 之后,
+                    // 再重新调用 initTable 方法
+                    if (length === 1) {
+                        q.pagenum = q.pagenum === 1 ? 1 : q.pagenum - 1;
+                    }
+                    initTable();
+                }
+            });
+            layer.close(index)
+        });
+    });
 })
